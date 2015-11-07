@@ -91,7 +91,10 @@ CheckToBeDestroyed	threads/scheduler.cc	/^Scheduler::CheckToBeDestroyed()$/;"	f	
 Cleanup	threads/main.cc	/^Cleanup(int x) $/;"	f	file:
 Clear	lib/bitmap.cc	/^Bitmap::Clear(int which) $/;"	f	class:Bitmap
 Close	lib/sysdep.cc	/^Close(int fd)$/;"	f
+Close	machine/interrupt.cc	/^Interrupt::Close(int fid)$/;"	f	class:Interrupt
 Close	test/start.S	/^Close:$/;"	l
+Close	threads/kernel.cc	/^int Kernel::Close(int fid)$/;"	f	class:Kernel
+CloseMe	filesys/filesys.h	/^	int CloseMe(int fid) {$/;"	f	class:FileSystem
 CloseSocket	lib/sysdep.cc	/^CloseSocket(int sockID)$/;"	f
 ComputeLatency	machine/disk.cc	/^Disk::ComputeLatency(int newSector, bool writing)$/;"	f	class:Disk
 Condition	threads/synch.cc	/^Condition::Condition(char* debugName)$/;"	f	class:Condition
@@ -566,13 +569,16 @@ OpInfo	machine/mipssim.h	/^struct OpInfo {$/;"	s
 OpString	machine/mipssim.h	/^struct OpString {$/;"	s
 Open	filesys/filesys.cc	/^FileSystem::Open(char *name)$/;"	f	class:FileSystem
 Open	filesys/filesys.h	/^    OpenFile* Open(char *name) {$/;"	f	class:FileSystem
+Open	machine/interrupt.cc	/^Interrupt::Open(char *name)$/;"	f	class:Interrupt
 Open	test/start.S	/^Open:$/;"	l
+Open	threads/kernel.cc	/^int Kernel::Open(char *name)$/;"	f	class:Kernel
 OpenFile	filesys/openfile.cc	/^OpenFile::OpenFile(int sector)$/;"	f	class:OpenFile
 OpenFile	filesys/openfile.h	/^    OpenFile(int f) { file = f; currentOffset = 0; }	\/\/ open the file$/;"	f	class:OpenFile
 OpenFile	filesys/openfile.h	/^class OpenFile {$/;"	c
 OpenFileId	userprog/syscall.h	/^typedef int OpenFileId;	$/;"	t
 OpenForReadWrite	lib/sysdep.cc	/^OpenForReadWrite(char *name, bool crashOnError)$/;"	f
 OpenForWrite	lib/sysdep.cc	/^OpenForWrite(char *name)$/;"	f
+OpenMe	filesys/filesys.h	/^    int OpenMe(char *name) {$/;"	f	class:FileSystem
 OpenSocket	lib/sysdep.cc	/^OpenSocket()$/;"	f
 OverflowException	machine/machine.h	/^		     OverflowException,     \/\/ Integer overflow in add or sub.$/;"	e	enum:ExceptionType
 P	threads/synch.cc	/^Semaphore::P()$/;"	f	class:Semaphore
@@ -627,6 +633,7 @@ Print	threads/main.cc	/^Print(char *name)$/;"	f
 Print	threads/scheduler.cc	/^Scheduler::Print()$/;"	f	class:Scheduler
 Print	threads/thread.h	/^    void Print() { cout << name; }$/;"	f	class:Thread
 PrintHeader	network/post.cc	/^PrintHeader(PacketHeader pktHdr, MailHeader mailHdr)$/;"	f	file:
+PrintInt	machine/interrupt.cc	/^Interrupt::PrintInt(int number) {}$/;"	f	class:Interrupt
 PrintInt	test/start.S	/^PrintInt:$/;"	l
 PrintPending	machine/interrupt.cc	/^PrintPending (PendingInterrupt *pending)$/;"	f	file:
 PrintSector	machine/disk.cc	/^PrintSector (bool writing, int sector, char *data)$/;"	f	file:
@@ -647,10 +654,13 @@ RaiseException	machine/machine.cc	/^Machine::RaiseException(ExceptionType which,
 RandomInit	lib/sysdep.cc	/^RandomInit(unsigned seed)$/;"	f
 RandomNumber	lib/sysdep.cc	/^RandomNumber()$/;"	f
 ReHash	lib/hash.cc	/^HashTable<Key,T>::ReHash()$/;"	f	class:HashTable
+Read	filesys/filesys.h	/^	int Read(char *buffer, int size, int fid) {$/;"	f	class:FileSystem
 Read	filesys/openfile.cc	/^OpenFile::Read(char *into, int numBytes)$/;"	f	class:OpenFile
 Read	filesys/openfile.h	/^    int Read(char *into, int numBytes) {$/;"	f	class:OpenFile
 Read	lib/sysdep.cc	/^Read(int fd, char *buffer, int nBytes)$/;"	f
+Read	machine/interrupt.cc	/^Interrupt::Read(char *buffer, int size, int fid)$/;"	f	class:Interrupt
 Read	test/start.S	/^Read:$/;"	l
+Read	threads/kernel.cc	/^int Kernel::Read(char *buffer, int size, int fid)$/;"	f	class:Kernel
 ReadAt	filesys/openfile.cc	/^OpenFile::ReadAt(char *into, int numBytes, int position)$/;"	f	class:OpenFile
 ReadAt	filesys/openfile.h	/^    int ReadAt(char *into, int numBytes, int position) { $/;"	f	class:OpenFile
 ReadFromSocket	lib/sysdep.cc	/^ReadFromSocket(int sockID, char *buffer, int packetSize)$/;"	f
@@ -817,10 +827,15 @@ SynchDisk	filesys/synchdisk.h	/^class SynchDisk : public CallBackObj {$/;"	c
 SynchList	threads/synchlist.cc	/^SynchList<T>::SynchList()$/;"	f	class:SynchList
 SynchList	threads/synchlist.h	/^class SynchList {$/;"	c
 SysAdd	userprog/ksyscall.h	/^int SysAdd(int op1, int op2)$/;"	f
+SysClose	userprog/ksyscall.h	/^int SysClose(int fid)$/;"	f
 SysConsoleInput	userprog/syscall.h	114;"	d
 SysConsoleOutput	userprog/syscall.h	115;"	d
 SysCreate	userprog/ksyscall.h	/^int SysCreate(char *filename)$/;"	f
 SysHalt	userprog/ksyscall.h	/^void SysHalt()$/;"	f
+SysOpen	userprog/ksyscall.h	/^OpenFileId SysOpen(char *name)$/;"	f
+SysPrintInt	userprog/ksyscall.h	/^void SysPrintInt(int number)$/;"	f
+SysRead	userprog/ksyscall.h	/^int SysRead(char *buffer, int size, OpenFileId fid)$/;"	f
+SysWrite	userprog/ksyscall.h	/^int SysWrite(char *buffer, int size, OpenFileId fid)$/;"	f
 SyscallException	machine/machine.h	/^		     SyscallException,      \/\/ A program executed a system call.$/;"	e	enum:ExceptionType
 SystemMode	machine/interrupt.h	/^enum MachineStatus {IdleMode, SystemMode, UserMode};$/;"	e	enum:MachineStatus
 SystemTick	machine/stats.h	/^const int SystemTick =	  10; 	\/\/ advance each time interrupts are enabled$/;"	v
@@ -903,9 +918,12 @@ WhenDonePCState	threads/switch.h	60;"	d
 WhenDonePCState	threads/switch.h	90;"	d
 WordToHost	machine/translate.cc	/^WordToHost(unsigned int word) {$/;"	f
 WordToMachine	machine/translate.cc	/^WordToMachine(unsigned int word) { return WordToHost(word); }$/;"	f
+Write	filesys/filesys.h	/^	int Write(char *buffer, int size, int fid) {$/;"	f	class:FileSystem
 Write	filesys/openfile.cc	/^OpenFile::Write(char *into, int numBytes)$/;"	f	class:OpenFile
 Write	filesys/openfile.h	/^    int Write(char *from, int numBytes) {$/;"	f	class:OpenFile
+Write	machine/interrupt.cc	/^Interrupt::Write(char *buffer, int size, int fid)$/;"	f	class:Interrupt
 Write	test/start.S	/^Write:$/;"	l
+Write	threads/kernel.cc	/^int Kernel::Write(char *buffer, int size, int fid)$/;"	f	class:Kernel
 WriteAt	filesys/openfile.cc	/^OpenFile::WriteAt(char *from, int numBytes, int position)$/;"	f	class:OpenFile
 WriteAt	filesys/openfile.h	/^    int WriteAt(char *from, int numBytes, int position) { $/;"	f	class:OpenFile
 WriteBack	filesys/directory.cc	/^Directory::WriteBack(OpenFile *file)$/;"	f	class:Directory
